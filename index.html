@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardwood Hub — WNBA Fan Marketplace · Season 30</title>
+  <meta name="description" content="The fan-first WNBA ticket exchange. Buy, sell, and trade game tickets, parking, club access, and merch — built by fans, for fans. Season 30 starts May 8.">
+  <meta property="og:title" content="Hardwood Hub — Built by WNBA Fans">
+  <meta property="og:description" content="Fan-to-fan ticket exchange for WNBA Season 30. Get early access.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1A3A2A">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────── -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Hardwood Hub home">
+      <div class="nav-logo-mark" aria-hidden="true">HH</div>
+      <span class="nav-logo-text">Hardwood<span>Hub</span></span>
+      <span class="nav-season-badge">S30</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#exchange">The Exchange</a></li>
+      <li><a href="#fan-wall">Fan Wall</a></li>
+      <li><a href="#watch-parties">Watch Parties</a></li>
+      <li>
+        <a href="#waitlist" class="nav-cta" data-modal="waitlist" role="button">
+          Get Early Access
+        </a>
+      </li>
+    </ul>
+
+    <button class="nav-mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────── -->
+<section id="hero" aria-labelledby="hero-heading">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;">
+
+    <div class="hero-left">
+      <div class="hero-eyebrow reveal">
+        <div class="hero-eyebrow-line" aria-hidden="true"></div>
+        <span class="hero-eyebrow-text">Season 30 · 15 Teams · Opening May 8</span>
+      </div>
+
+      <h1 class="hero-h1 reveal reveal-delay-1" id="hero-heading">
+        YOUR<br>
+        SEATS.<br>
+        YOUR<br>
+        <span class="highlight">COMMUNITY.</span>
+      </h1>
+
+      <p class="hero-sub reveal reveal-delay-2">
+        Fan-to-fan ticket exchange for WNBA games. Sell your extra seats, find courtside access, swap merch — all inside the community. Built by fans. For fans.
+      </p>
+
+      <div class="hero-actions reveal reveal-delay-3">
+        <button class="btn-primary" data-modal="waitlist">
+          Get Early Access →
+        </button>
+        <a href="#how" class="btn-secondary">See How It Works</a>
+      </div>
+
+      <div class="hero-social-proof reveal reveal-delay-4">
+        <div class="hero-avatars" aria-hidden="true">
+          <span>💛</span><span>🟢</span><span>🔴</span><span>🔵</span>
+        </div>
+        <p class="hero-social-text">
+          <strong>Join fans from all 15 cities</strong><br>
+          early access opening soon
+        </p>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="dates-card reveal reveal-delay-2">
+        <div class="dates-card-header">
+          <span class="dates-card-title">2026 KEY DATES</span>
+          <span class="badge badge-orange">Season 30</span>
+        </div>
+        <div class="dates-list" id="dates-list" role="list" aria-label="2026 WNBA key dates">
+          <!-- Built by JS -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Stats Bar ─────────────────────────────────────── -->
+<section id="stats" aria-label="Platform highlights">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number">15</div>
+        <div class="stat-label">WNBA Teams</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Exchange Categories</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-number">S30</div>
+        <div class="stat-label">Opens May 8, 2026</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-number">0%</div>
+        <div class="stat-label">Fee to List</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Moment / Narrative ─────────────────────────────── -->
+<section id="moment" aria-labelledby="moment-heading">
+  <div class="moment-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="moment-content">
+      <p class="moment-eyebrow reveal">Our Moment</p>
+      <h2 class="moment-h2 reveal reveal-delay-1" id="moment-heading">
+        THIS IS<br><em>OUR SEASON.</em>
+      </h2>
+      <p class="moment-body reveal reveal-delay-2">
+        The WNBA is entering its <strong>30th year</strong> with 15 teams, two new cities, and a generation of fans who built this thing from the ground up. Season ticket holders who couldn't make a game used to leave their seats empty — or scramble through bots and resellers.
+      </p>
+      <p class="moment-body reveal reveal-delay-3">
+        Not anymore. <strong>Hardwood Hub is the exchange we always needed:</strong> fan-to-fan, team-color-coded, with a rep system that rewards the community builders. No corporate middlemen. No bots. Just us.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Teams Scroll ───────────────────────────────────── -->
+<section id="teams" aria-label="All 15 WNBA teams">
+  <div class="teams-scroll">
+    <div class="teams-track" id="teams-track" aria-hidden="true">
+      <!-- Built by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ── How It Works ──────────────────────────────────── -->
+<section id="how" aria-labelledby="how-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow reveal">How It Works</p>
+      <h2 class="section-title reveal reveal-delay-1" id="how-heading">STRAIGHTFORWARD.<br>NO DRAMA.</h2>
+      <p class="section-sub reveal reveal-delay-2">Verify once, then list, offer, and close deals. Payment comes through within 24 hours of completion. That's it.</p>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-step reveal">
+        <div class="how-step-num" aria-hidden="true">1</div>
+        <div class="how-step-icon">✅</div>
+        <h3 class="how-step-title">Verify</h3>
+        <p class="how-step-body">Upload your season ticket card or proof of purchase. One-time review, then you're in. Verified badge on your profile.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-1">
+        <div class="how-step-num" aria-hidden="true">2</div>
+        <div class="how-step-icon">🎟️</div>
+        <h3 class="how-step-title">List</h3>
+        <p class="how-step-body">Post your seats, parking, club access, or merch. No fee to list. Set your price or mark it as a trade.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-2">
+        <div class="how-step-num" aria-hidden="true">3</div>
+        <div class="how-step-icon">🤝</div>
+        <h3 class="how-step-title">Deal</h3>
+        <p class="how-step-body">Make an offer, go back and forth, confirm the terms. Both fans see a deal summary page when you're locked in.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-3">
+        <div class="how-step-num" aria-hidden="true">4</div>
+        <div class="how-step-icon">💸</div>
+        <h3 class="how-step-title">Get Paid</h3>
+        <p class="how-step-body">Transfer your ticket through your team's app, mark it sent. Buyer confirms received. Done — payment lands within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── The Exchange ───────────────────────────────────── -->
+<section id="exchange" aria-labelledby="exchange-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow reveal">The Exchange</p>
+      <h2 class="section-title reveal reveal-delay-1" id="exchange-heading">FOUR WAYS<br>TO TRADE</h2>
+      <p class="section-sub reveal reveal-delay-2">Tickets are just the start. Season 30 fan-to-fan exchange covers everything that gets you into the building — and home with a story.</p>
+    </div>
+
+    <div class="exchange-grid">
+      <div class="exchange-card reveal">
+        <div class="exchange-card-icon">🎟️</div>
+        <h3 class="exchange-card-title">Game Tickets</h3>
+        <p class="exchange-card-body">Section-specific listings with row, seat count, and price. Filter by team, date, or what's included. Sell or mark it as a trade for seats in another city.</p>
+        <div class="exchange-card-tags">
+          <span class="tag">Sell</span>
+          <span class="tag">Trade</span>
+          <span class="tag">Club Included</span>
+          <span class="tag">Parking Bundled</span>
+          <span class="tag">Warmup Access</span>
+        </div>
+      </div>
+
+      <div class="exchange-card reveal reveal-delay-1">
+        <div class="exchange-card-icon">🚗</div>
+        <h3 class="exchange-card-title">Parking Passes</h3>
+        <p class="exchange-card-body">Covered, surface, or heated. Connected to the arena or a 5-minute walk. List the lot name and let buyers pick their preference.</p>
+        <div class="exchange-card-tags">
+          <span class="tag">Covered</span>
+          <span class="tag">Surface</span>
+          <span class="tag">Connected</span>
+          <span class="tag">Multi-pass</span>
+        </div>
+      </div>
+
+      <div class="exchange-card reveal reveal-delay-2">
+        <div class="exchange-card-icon">💎</div>
+        <h3 class="exchange-card-title">Club & Courtside</h3>
+        <p class="exchange-card-body">Tunnel access. Suite invites. VIP lounge passes. Row 1 center. The premium experiences that don't make it to public resale.</p>
+        <div class="exchange-card-tags">
+          <span class="tag">Courtside</span>
+          <span class="tag">Club Level</span>
+          <span class="tag">Suite</span>
+          <span class="tag">F&B Included</span>
+        </div>
+      </div>
+
+      <div class="exchange-card reveal reveal-delay-3">
+        <div class="exchange-card-icon">🎽</div>
+        <h3 class="exchange-card-title">Merch Exchange</h3>
+        <p class="exchange-card-body">Jerseys, warm-ups, tees, hats, hoodies. Condition-rated (Mint / Good / Fair) with retail price comparison so everyone knows what they're getting.</p>
+        <div class="exchange-card-tags">
+          <span class="tag">Jersey</span>
+          <span class="tag">Warm-Up</span>
+          <span class="tag">Mint Condition</span>
+          <span class="tag">Player Name</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Fan Rep ────────────────────────────────────────── -->
+<section id="fan-rep" aria-labelledby="fan-rep-heading">
+  <div class="container">
+    <div class="rep-layout">
+
+      <div class="rep-left">
+        <p class="section-eyebrow reveal">Fan Rep</p>
+        <h2 class="section-title reveal reveal-delay-1" id="fan-rep-heading">YOUR REP<br>OPENS DOORS</h2>
+        <p class="section-sub reveal reveal-delay-2" style="margin-left:0;text-align:left;">
+          Every completed deal, approved photo, and verified ticket holder adds to your Fan Rep. Hit 25 and you get 24-hour early access to every new listing that drops. Community builders get first pick.
+        </p>
+        <div class="rep-actions-list reveal reveal-delay-3" id="rep-actions" aria-label="How to earn Fan Rep">
+          <!-- Built by JS -->
+        </div>
+        <p style="font-size:12px;color:rgba(245,239,224,0.4);margin-top:16px;" class="reveal reveal-delay-4">
+          Early access threshold: 25 Fan Rep · Configurable per season
+        </p>
+      </div>
+
+      <div class="rep-right">
+        <div class="rep-score-card reveal reveal-delay-1">
+          <div class="rep-score-header">
+            <div class="rep-score-user">
+              <div class="rep-avatar" aria-hidden="true">💛</div>
+              <div>
+                <div class="rep-name">Jordan M.</div>
+                <div class="rep-team">Indiana Fever · Chicago, IL</div>
+              </div>
+            </div>
+            <div>
+              <div class="rep-score-num" aria-label="Fan Rep score: 47">47</div>
+              <div class="rep-score-label">Fan Rep</div>
+            </div>
+          </div>
+
+          <div class="rep-bar" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100" aria-label="Fan Rep progress">
+            <div class="rep-bar-fill" id="rep-bar-fill" style="width:0%"></div>
+          </div>
+          <div class="rep-bar-labels">
+            <span>0</span>
+            <span>25 → Early Access 🔑</span>
+          </div>
+
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;">
+            <span class="badge badge-gold">Verified Fan</span>
+            <span class="badge badge-green">Early Access</span>
+            <span class="badge badge-outline">Season 30</span>
+          </div>
+        </div>
+
+        <div class="rep-score-card reveal reveal-delay-2" style="background:rgba(255,255,255,0.02);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <span style="font-family:var(--font-head);font-size:16px;letter-spacing:0.06em;color:var(--cream);">RECENT ACTIVITY</span>
+            <span class="badge badge-orange">+10 pts</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="font-size:13px;color:rgba(245,239,224,0.7);">✅ Season ticket verified <span style="float:right;color:var(--gold);font-weight:700;">+10</span></div>
+            <div style="font-size:13px;color:rgba(245,239,224,0.7);">🎟️ Sold 2x Fever vs. Wings <span style="float:right;color:var(--gold);font-weight:700;">+5</span></div>
+            <div style="font-size:13px;color:rgba(245,239,224,0.7);">📸 Fan wall photo featured <span style="float:right;color:var(--gold);font-weight:700;">+2</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Fan Wall ───────────────────────────────────────── -->
+<section id="fan-wall" aria-labelledby="fan-wall-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow reveal">Fan Wall</p>
+      <h2 class="section-title reveal reveal-delay-1" id="fan-wall-heading">YOUR MOMENTS.<br>OUR WALL.</h2>
+      <p class="section-sub reveal reveal-delay-2">Real fans. Real games. Real energy. Submit your photo and get featured — and earn Fan Rep when it goes live.</p>
+    </div>
+
+    <div class="fan-wall-grid reveal reveal-delay-1" id="fan-wall-grid" role="list" aria-label="Fan submitted photos">
+      <!-- Built by JS -->
+    </div>
+
+    <p class="fan-wall-hashtags reveal">
+      Tag us: <span>#HardwoodHub</span> <span>#Season30</span> <span>#WBB</span> <span>#WNBA</span> · Or DM us on Instagram <span>@hardwoodhub</span>
+    </p>
+  </div>
+</section>
+
+<!-- ── Watch Parties ──────────────────────────────────── -->
+<section id="watch-parties" aria-labelledby="wp-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow reveal">Watch Party Network</p>
+      <h2 class="section-title reveal reveal-delay-1" id="wp-heading">FIND YOUR<br>HOME BASE</h2>
+      <p class="section-sub reveal reveal-delay-2">Official watch party venues in cities across the league. RSVP directly — no app needed. Want to host? Apply below.</p>
+    </div>
+
+    <div class="cities-grid reveal reveal-delay-1" id="cities-grid" role="list" aria-label="Watch party cities">
+      <!-- Built by JS -->
+    </div>
+
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <p style="font-size:14px;color:rgba(245,239,224,0.5);margin-bottom:16px;">Don't see your city? We're building out the network for Season 30.</p>
+      <button class="btn-secondary" data-modal="venue" style="margin:0 auto;">Apply to Host a Watch Party →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── Waitlist CTA ───────────────────────────────────── -->
+<section id="waitlist" aria-labelledby="waitlist-heading">
+  <div class="waitlist-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="waitlist-content">
+      <h2 class="waitlist-h2 reveal" id="waitlist-heading">
+        FIRST IN.<br><em>FIRST PICK.</em>
+      </h2>
+      <p class="waitlist-sub reveal reveal-delay-1">
+        Get early access before Season 30 tip-off. Early members start with 25 Fan Rep — enough to unlock 24-hour early listing access on day one.
+      </p>
+
+      <div class="waitlist-perks reveal reveal-delay-2">
+        <div class="waitlist-perk">
+          <span class="waitlist-perk-icon">🔑</span>
+          <span>Early access</span>
+        </div>
+        <div class="waitlist-perk">
+          <span class="waitlist-perk-icon">🏅</span>
+          <span>25 Fan Rep on signup</span>
+        </div>
+        <div class="waitlist-perk">
+          <span class="waitlist-perk-icon">📸</span>
+          <span>Fan Wall founding member badge</span>
+        </div>
+      </div>
+
+      <div class="waitlist-form reveal reveal-delay-3" id="waitlist-form-wrapper">
+        <input
+          class="waitlist-input"
+          id="waitlist-email"
+          type="email"
+          placeholder="Enter your email"
+          autocomplete="email"
+          aria-label="Email address for waitlist"
+        >
+        <button class="waitlist-submit" id="waitlist-submit" type="button">
+          Count Me In →
+        </button>
+      </div>
+      <div class="waitlist-success" id="waitlist-success" role="alert" aria-live="polite"></div>
+
+      <p class="waitlist-note reveal reveal-delay-4">No spam. Just early access and one update when we launch. 🏀</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────── -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Hardwood<span>Hub</span></div>
+        <div class="footer-copy" style="margin-top:8px;">Built by WNBA fans · Season 30 · May 8, 2026</div>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="#how">How It Works</a>
+        <a href="#exchange">Exchange</a>
+        <a href="#fan-wall">Fan Wall</a>
+        <a href="#watch-parties">Watch Parties</a>
+        <a href="#waitlist" data-modal="waitlist">Join Waitlist</a>
+      </nav>
+      <div class="footer-copy">© 2026 Hardwood Hub · Fan-first, always.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── Modal ──────────────────────────────────────────── -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+    <h2 class="modal-title" id="modal-title"></h2>
+    <p class="modal-sub" id="modal-sub"></p>
+    <div class="modal-form" id="modal-form" style="display:flex;flex-direction:column;gap:12px;"></div>
+    <div class="modal-success" id="modal-success" role="alert" aria-live="polite"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

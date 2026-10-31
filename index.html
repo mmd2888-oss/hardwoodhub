@@ -3,437 +3,582 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hardwood Hub — WNBA Fan Marketplace · Season 30</title>
-  <meta name="description" content="The fan-first WNBA ticket exchange. Buy, sell, and trade game tickets, parking, club access, and merch — built by fans, for fans. Season 30 starts May 8.">
+  <title>Hardwood Hub — WNBA Fan Marketplace</title>
+  <meta name="description" content="The verified member exchange for WNBA fans. Trade seats, sell extras, and access perks that never hit public resale. Built by fans, for fans.">
   <meta property="og:title" content="Hardwood Hub — Built by WNBA Fans">
-  <meta property="og:description" content="Fan-to-fan ticket exchange for WNBA Season 30. Get early access.">
-  <meta property="og:type" content="website">
+  <meta property="og:description" content="The fan-first WNBA ticket exchange. Verified members only. Get early access."">
   <meta name="theme-color" content="#1A3A2A">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Variables ─────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1A3A2A;--orange:#FF5C1A;--gold:#E8B84B;--cream:#F5EFE0;
+  --black:#0D0D0D;--gray:#1A1A1A;--gray2:#2A2A2A;--gray3:#6B6B6B;
+  --fh:'Bebas Neue',Impact,sans-serif;--fb:'DM Sans',system-ui,sans-serif;
+  --r:12px;--rs:6px;--nav:64px;--tr:0.25s ease;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--fb);background:var(--black);color:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:var(--fb);border:none;background:none}
+ul{list-style:none}
+
+/* ── Utilities ─────────────────────────────────────────── */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.badge{display:inline-block;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.badge-orange{background:var(--orange);color:#fff}
+.badge-gold{background:var(--gold);color:var(--black)}
+.badge-green{background:var(--green);color:var(--cream);border:1px solid rgba(255,255,255,.15)}
+.badge-outline{background:transparent;color:var(--cream);border:1px solid rgba(255,255,255,.3)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ── Nav ───────────────────────────────────────────────── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav);display:flex;align-items:center;padding:0 24px;background:rgba(13,13,13,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);transition:background var(--tr)}
+#nav.scrolled{background:rgba(13,13,13,.97)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1200px;margin:0 auto}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:36px;height:36px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:20px;color:#fff}
+.nav-logo-text{font-family:var(--fh);font-size:22px;letter-spacing:.04em}
+.nav-logo-text span{color:var(--orange)}
+.nav-s30{font-size:10px;font-weight:700;background:var(--gold);color:var(--black);padding:2px 8px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;margin-left:8px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(245,239,224,.7);transition:color var(--tr)}
+.nav-links a:hover{color:var(--cream)}
+.nav-cta{padding:9px 20px;background:var(--orange);color:#fff !important;border-radius:var(--rs);font-weight:700;font-size:14px !important;transition:background var(--tr),transform var(--tr) !important}
+.nav-cta:hover{background:#e64d0f !important;transform:translateY(-1px)}
+.nav-tog{display:none;flex-direction:column;gap:5px;width:28px;cursor:pointer}
+.nav-tog span{display:block;height:2px;background:var(--cream);border-radius:2px;transition:var(--tr)}
+
+/* ── Hero ──────────────────────────────────────────────── */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:var(--nav);position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(26,58,42,.6) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(255,92,26,.12) 0%,transparent 50%);pointer-events:none}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 0;position:relative;z-index:1}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.hero-eyebrow-line{width:40px;height:2px;background:var(--orange)}
+.hero-eyebrow-text{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+.hero-h1{font-family:var(--fh);font-size:clamp(56px,6vw,88px);line-height:.95;letter-spacing:.02em;color:var(--cream);margin-bottom:24px}
+.hero-h1 .hi{color:var(--orange)}
+.hero-sub{font-size:18px;color:rgba(245,239,224,.75);line-height:1.6;max-width:440px;margin-bottom:40px}
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-primary{padding:14px 28px;background:var(--orange);color:#fff;border-radius:var(--rs);font-weight:700;font-size:15px;transition:background var(--tr),transform var(--tr),box-shadow var(--tr);display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:#e64d0f;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,92,26,.35)}
+.btn-secondary{padding:14px 28px;background:transparent;color:var(--cream);border:1.5px solid rgba(245,239,224,.3);border-radius:var(--rs);font-weight:600;font-size:15px;transition:border-color var(--tr),background var(--tr);display:inline-block}
+.btn-secondary:hover{border-color:var(--cream);background:rgba(245,239,224,.05)}
+.hero-proof{margin-top:48px;display:flex;align-items:center;gap:16px}
+.hero-avs{display:flex}
+.hero-avs span{width:34px;height:34px;border-radius:50%;border:2px solid var(--black);background:var(--green);display:flex;align-items:center;justify-content:center;font-size:14px;margin-left:-10px}
+.hero-avs span:first-child{margin-left:0}
+.hero-proof-txt{font-size:13px;color:rgba(245,239,224,.65);line-height:1.4}
+.hero-proof-txt strong{color:var(--cream);font-weight:600}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:80px 0 80px 60px;position:relative;z-index:1}
+.dates-card{background:rgba(26,58,42,.35);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:24px;backdrop-filter:blur(12px)}
+.dates-card-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.dates-card-title{font-family:var(--fh);font-size:18px;letter-spacing:.06em}
+.date-item{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.date-item:last-child{border-bottom:none}
+.date-pill{min-width:54px;text-align:center}
+.date-pill-mo{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--orange)}
+.date-pill-day{font-family:var(--fh);font-size:28px;line-height:1;color:var(--cream)}
+.date-info{flex:1}
+.date-label{font-size:13px;font-weight:600;color:var(--cream);line-height:1.3}
+.date-detail{font-size:11px;color:rgba(245,239,224,.5);margin-top:2px}
+.date-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.date-dot.hot{background:var(--orange)}
+
+/* ── Stats ─────────────────────────────────────────────── */
+#stats{background:var(--green);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:32px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-item{text-align:center;padding:0 24px;border-right:1px solid rgba(255,255,255,.12)}
+.stat-item:last-child{border-right:none}
+.stat-number{font-family:var(--fh);font-size:42px;letter-spacing:.02em;color:var(--gold);line-height:1}
+.stat-label{font-size:13px;color:rgba(245,239,224,.65);margin-top:4px;font-weight:500}
+
+/* ── Moment ────────────────────────────────────────────── */
+#moment{padding:120px 0;position:relative;overflow:hidden}
+.moment-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(26,58,42,.4) 0%,transparent 60%);pointer-events:none}
+.moment-content{max-width:720px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.sec-eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+.sec-title{font-family:var(--fh);font-size:clamp(32px,4vw,52px);letter-spacing:.02em;color:var(--cream);line-height:1}
+.moment-h2{font-family:var(--fh);font-size:clamp(40px,5vw,64px);letter-spacing:.02em;line-height:.95;color:var(--cream);margin-bottom:28px}
+.moment-h2 em{font-style:normal;color:var(--orange)}
+.moment-body{font-size:18px;color:rgba(245,239,224,.75);line-height:1.7;margin-bottom:20px}
+.moment-body strong{color:var(--cream);font-weight:600}
+
+/* ── Section header ────────────────────────────────────── */
+.sec-header{text-align:center;margin-bottom:64px}
+.sec-sub{font-size:16px;color:rgba(245,239,224,.65);margin-top:16px;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* ── How ───────────────────────────────────────────────── */
+#how{padding:120px 0;background:var(--gray2)}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
+.how-step{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:32px 24px;position:relative;transition:background var(--tr),transform var(--tr)}
+.how-step:hover{background:rgba(255,255,255,.06);transform:translateY(-4px)}
+.how-step-num{font-family:var(--fh);font-size:64px;line-height:1;color:rgba(255,255,255,.06);position:absolute;top:16px;right:20px}
+.how-step-icon{margin-bottom:16px;line-height:0}
+.how-step-title{font-family:var(--fh);font-size:22px;letter-spacing:.04em;color:var(--cream);margin-bottom:10px}
+.how-step-body{font-size:14px;color:rgba(245,239,224,.6);line-height:1.6}
+
+/* ── Exchange ──────────────────────────────────────────── */
+#exchange{padding:120px 0}
+.exch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.exch-card{background:rgba(26,58,42,.2);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:32px;transition:background var(--tr),border-color var(--tr),transform var(--tr)}
+.exch-card:hover{background:rgba(26,58,42,.4);border-color:rgba(255,255,255,.15);transform:translateY(-4px)}
+.exch-icon{margin-bottom:20px;line-height:0}
+.exch-title{font-family:var(--fh);font-size:26px;letter-spacing:.04em;color:var(--cream);margin-bottom:12px}
+.exch-body{font-size:15px;color:rgba(245,239,224,.65);line-height:1.6;margin-bottom:20px}
+.exch-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;font-weight:600;padding:4px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;color:rgba(245,239,224,.75);letter-spacing:.04em}
+
+/* ── Teams ticker ──────────────────────────────────────── */
+#teams{padding:80px 0}
+.teams-scroll{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent)}
+.teams-track{display:flex;gap:12px;width:max-content;animation:scroll-teams 30s linear infinite}
+.teams-track:hover{animation-play-state:paused}
+@keyframes scroll-teams{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.team-chip{display:flex;align-items:center;gap:8px;padding:10px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:100px;white-space:nowrap;transition:background var(--tr)}
+.team-chip:hover{background:rgba(255,255,255,.08)}
+.team-dot{width:10px;height:10px;border-radius:50%}
+.team-chip-name{font-size:13px;font-weight:600;color:var(--cream)}
+
+/* ── Waitlist ──────────────────────────────────────────── */
+#waitlist{padding:120px 0;background:var(--green);position:relative;overflow:hidden}
+.waitlist-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(255,92,26,.15) 0%,transparent 60%);pointer-events:none}
+.waitlist-content{max-width:600px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.waitlist-h2{font-family:var(--fh);font-size:clamp(36px,5vw,58px);letter-spacing:.02em;color:var(--cream);line-height:.95;margin-bottom:16px}
+.waitlist-h2 em{font-style:normal;color:var(--gold)}
+.waitlist-sub{font-size:16px;color:rgba(245,239,224,.75);margin-bottom:40px;line-height:1.6}
+.waitlist-perks{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.waitlist-perk{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(245,239,224,.8);font-weight:500}
+.waitlist-form{display:flex;gap:12px;max-width:480px;margin:0 auto}
+.waitlist-input{flex:1;padding:14px 18px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:var(--rs);color:var(--cream);font-family:var(--fb);font-size:15px;outline:none;transition:border-color var(--tr),background var(--tr)}
+.waitlist-input::placeholder{color:rgba(245,239,224,.4)}
+.waitlist-input:focus{border-color:var(--orange);background:rgba(255,255,255,.12)}
+.waitlist-submit{padding:14px 24px;background:var(--orange);color:#fff;border-radius:var(--rs);font-weight:700;font-size:15px;white-space:nowrap;transition:background var(--tr),transform var(--tr),box-shadow var(--tr)}
+.waitlist-submit:hover{background:#e64d0f;transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,92,26,.4)}
+.waitlist-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.waitlist-ok{display:none;padding:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);font-weight:600;color:var(--cream);font-size:15px}
+.waitlist-ok.show{display:block}
+.waitlist-note{margin-top:16px;font-size:12px;color:rgba(245,239,224,.4)}
+
+/* ── Footer ────────────────────────────────────────────── */
+footer{padding:48px 0 32px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-family:var(--fh);font-size:20px;letter-spacing:.04em;color:var(--cream)}
+.footer-logo span{color:var(--orange)}
+.footer-copy{font-size:13px;color:rgba(245,239,224,.35)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:rgba(245,239,224,.45);transition:color var(--tr)}
+.footer-links a:hover{color:var(--cream)}
+
+/* ── Modal ─────────────────────────────────────────────── */
+.modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(13,13,13,.92);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--tr)}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:var(--gray2);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:48px;max-width:520px;width:calc(100% - 48px);position:relative;transform:scale(.96) translateY(12px);transition:transform .3s ease}
+.modal-overlay.open .modal{transform:scale(1) translateY(0)}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:18px;color:rgba(245,239,224,.6);transition:background var(--tr)}
+.modal-close:hover{background:rgba(255,255,255,.15);color:var(--cream)}
+.modal-title{font-family:var(--fh);font-size:32px;letter-spacing:.04em;color:var(--cream);margin-bottom:8px}
+.modal-sub{font-size:14px;color:rgba(245,239,224,.6);margin-bottom:28px;line-height:1.6}
+.modal-form{display:flex;flex-direction:column;gap:12px}
+.modal-lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(245,239,224,.6);display:block;margin-bottom:6px}
+.modal-input,.modal-select{width:100%;padding:12px 16px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:var(--rs);color:var(--cream);font-family:var(--fb);font-size:15px;outline:none;transition:border-color var(--tr)}
+.modal-input:focus,.modal-select:focus{border-color:var(--orange)}
+.modal-input::placeholder{color:rgba(245,239,224,.3)}
+.modal-select{appearance:none;cursor:pointer}
+.modal-select option{background:var(--gray2)}
+.modal-btn{padding:14px;background:var(--orange);color:#fff;border-radius:var(--rs);font-weight:700;font-size:16px;width:100%;transition:background var(--tr),transform var(--tr);margin-top:8px}
+.modal-btn:hover{background:#e64d0f;transform:translateY(-1px)}
+.modal-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.modal-success{display:none;text-align:center;padding:32px 0 16px}
+.modal-success.show{display:block}
+.modal-success-icon{margin-bottom:20px;display:flex;justify-content:center}
+.modal-success-title{font-family:var(--fh);font-size:28px;letter-spacing:.04em;color:var(--cream);margin-bottom:12px}
+.modal-success-body{font-size:15px;color:rgba(245,239,224,.65);line-height:1.6}
+
+/* ── Toast ─────────────────────────────────────────────── */
+.toast{position:fixed;bottom:28px;right:28px;z-index:2000;background:var(--green);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:16px 20px;color:var(--cream);font-size:14px;font-weight:500;box-shadow:0 4px 24px rgba(0,0,0,.4);transform:translateY(16px);opacity:0;transition:transform var(--tr),opacity var(--tr);max-width:320px}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media(max-width:1024px){
+  .how-grid{grid-template-columns:repeat(2,1fr)}
+
+}
+@media(max-width:768px){
+  #hero{grid-template-columns:1fr;min-height:auto;padding-top:calc(var(--nav) + 20px)}
+  .hero-left{padding:48px 0 32px}
+  .hero-right{padding:0 0 60px}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:var(--nav);left:0;right:0;background:var(--black);padding:24px;gap:20px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-tog{display:flex}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:16px}
+  .exch-grid{grid-template-columns:1fr}
+  .waitlist-form{flex-direction:column}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .modal{padding:32px 24px}
+}
+@media(max-width:480px){
+  .container{padding:0 16px}
+  .waitlist-perks{flex-direction:column;align-items:center}
+  .hero-h1{font-size:52px}
+  .how-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
 
-<!-- ── Navigation ─────────────────────────────────────── -->
-<nav id="nav" role="navigation" aria-label="Main navigation">
+<!-- NAV -->
+<nav id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo" aria-label="Hardwood Hub home">
-      <div class="nav-logo-mark" aria-hidden="true">HH</div>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">HH</div>
       <span class="nav-logo-text">Hardwood<span>Hub</span></span>
-      <span class="nav-season-badge">S30</span>
+      <span class="nav-s30">Beta</span>
     </a>
-
-    <ul class="nav-links" role="list">
+    <ul class="nav-links" id="nav-links">
       <li><a href="#how">How It Works</a></li>
       <li><a href="#exchange">The Exchange</a></li>
-      <li><a href="#fan-wall">Fan Wall</a></li>
-      <li><a href="#watch-parties">Watch Parties</a></li>
-      <li>
-        <a href="#waitlist" class="nav-cta" data-modal="waitlist" role="button">
-          Get Early Access
-        </a>
-      </li>
+      <li><a href="#waitlist" class="nav-cta" data-modal="waitlist">Get Early Access</a></li>
     </ul>
-
-    <button class="nav-mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <button class="nav-tog" id="nav-tog" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- ── Hero ──────────────────────────────────────────── -->
-<section id="hero" aria-labelledby="hero-heading">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;">
-
-    <div class="hero-left">
-      <div class="hero-eyebrow reveal">
-        <div class="hero-eyebrow-line" aria-hidden="true"></div>
-        <span class="hero-eyebrow-text">Season 30 · 15 Teams · Opening May 8</span>
-      </div>
-
-      <h1 class="hero-h1 reveal reveal-delay-1" id="hero-heading">
-        YOUR<br>
-        SEATS.<br>
-        YOUR<br>
-        <span class="highlight">COMMUNITY.</span>
-      </h1>
-
-      <p class="hero-sub reveal reveal-delay-2">
-        Fan-to-fan ticket exchange for WNBA games. Sell your extra seats, find courtside access, swap merch — all inside the community. Built by fans. For fans.
-      </p>
-
-      <div class="hero-actions reveal reveal-delay-3">
-        <button class="btn-primary" data-modal="waitlist">
-          Get Early Access →
-        </button>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="container" style="display:contents">
+    <div class="hero-left" style="padding-left:max(24px,calc((100vw - 1200px)/2 + 24px))">
+      <h1 class="hero-h1 reveal">YOUR<br>SEATS.<br>YOUR<br><span class="hi">COMMUNITY.</span></h1>
+      <p class="hero-sub reveal d2">The verified member exchange for WNBA fans. Trade seats with fans in other cities, sell your extras, and access perks that never hit public resale. Built by fans. For fans.</p>
+      <div class="hero-actions reveal d3">
+        <button class="btn-primary" data-modal="waitlist">Get Early Access →</button>
         <a href="#how" class="btn-secondary">See How It Works</a>
       </div>
-
-      <div class="hero-social-proof reveal reveal-delay-4">
-        <div class="hero-avatars" aria-hidden="true">
-          <span>💛</span><span>🟢</span><span>🔴</span><span>🔵</span>
+      <div class="hero-proof reveal d4">
+        <div class="hero-avs">
+          <span style="background:#FFCD00"></span>
+          <span style="background:#2C5234"></span>
+          <span style="background:#C8102E"></span>
+          <span style="background:#418FDE"></span>
         </div>
-        <p class="hero-social-text">
-          <strong>Join fans from all 15 cities</strong><br>
-          early access opening soon
-        </p>
+        <p class="hero-proof-txt"><strong>Verified season ticket holders only</strong><br>early access opening soon</p>
       </div>
     </div>
-
-    <div class="hero-right">
-      <div class="dates-card reveal reveal-delay-2">
-        <div class="dates-card-header">
-          <span class="dates-card-title">2026 KEY DATES</span>
-          <span class="badge badge-orange">Season 30</span>
+    <div class="hero-right" style="padding-right:max(24px,calc((100vw - 1200px)/2 + 24px))">
+      <div class="dates-card reveal d2">
+        <div class="dates-card-hdr">
+          <span class="dates-card-title">GET EARLY ACCESS</span>
+          <span class="badge badge-gold">Members Only</span>
         </div>
-        <div class="dates-list" id="dates-list" role="list" aria-label="2026 WNBA key dates">
-          <!-- Built by JS -->
+        <p style="font-size:15px;color:rgba(245,239,224,.7);line-height:1.6;margin-bottom:24px">Be among the first verified members on Hardwood Hub. Early signups get founding member access before we open to the public.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(245,239,224,.8)">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0"></span>
+            Verified members only — no bots, no anonymous sellers
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(245,239,224,.8)">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0"></span>
+            Payment holds protect every deal
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(245,239,224,.8)">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0"></span>
+            Trade seats across cities with fans you can trust
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(245,239,224,.8)">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0"></span>
+            $1 flat fee on trades. 0% to list.
+          </div>
         </div>
+        <div style="display:flex;gap:10px">
+          <input id="hero-email" type="email" placeholder="Enter your email" style="flex:1;padding:12px 16px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);border-radius:var(--rs);color:var(--cream);font-family:var(--fb);font-size:14px;outline:none;transition:border-color var(--tr)" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='rgba(255,255,255,.12)'">
+          <button onclick="heroJoin()" style="padding:12px 20px;background:var(--orange);color:#fff;border-radius:var(--rs);font-weight:700;font-size:14px;white-space:nowrap;transition:background var(--tr)" onmouseover="this.style.background='#e64d0f'" onmouseout="this.style.background='var(--orange)'">Join →</button>
+        </div>
+        <div id="hero-ok" style="display:none;margin-top:16px;font-size:14px;font-weight:600;color:var(--gold)">You're on the list. We'll be in touch.</div>
+        <p style="margin-top:14px;font-size:11px;color:rgba(245,239,224,.35)">No spam. One email when we launch.</p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ── Stats Bar ─────────────────────────────────────── -->
-<section id="stats" aria-label="Platform highlights">
+<!-- STATS -->
+<section id="stats">
   <div class="container">
     <div class="stats-grid">
-      <div class="stat-item reveal">
-        <div class="stat-number">15</div>
-        <div class="stat-label">WNBA Teams</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-1">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Exchange Categories</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-2">
-        <div class="stat-number">S30</div>
-        <div class="stat-label">Opens May 8, 2026</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-3">
-        <div class="stat-number">0%</div>
-        <div class="stat-label">Fee to List</div>
-      </div>
+      <div class="stat-item reveal"><div class="stat-number">$1</div><div class="stat-label">Flat Fee Per Trade</div></div>
+      <div class="stat-item reveal d1"><div class="stat-number">0%</div><div class="stat-label">Fee to List</div></div>
     </div>
   </div>
 </section>
 
-<!-- ── Moment / Narrative ─────────────────────────────── -->
-<section id="moment" aria-labelledby="moment-heading">
-  <div class="moment-bg" aria-hidden="true"></div>
+<!-- MOMENT -->
+<section id="moment">
+  <div class="moment-bg"></div>
   <div class="container">
     <div class="moment-content">
-      <p class="moment-eyebrow reveal">Our Moment</p>
-      <h2 class="moment-h2 reveal reveal-delay-1" id="moment-heading">
-        THIS IS<br><em>OUR SEASON.</em>
-      </h2>
-      <p class="moment-body reveal reveal-delay-2">
-        The WNBA is entering its <strong>30th year</strong> with 15 teams, two new cities, and a generation of fans who built this thing from the ground up. Season ticket holders who couldn't make a game used to leave their seats empty — or scramble through bots and resellers.
-      </p>
-      <p class="moment-body reveal reveal-delay-3">
-        Not anymore. <strong>Hardwood Hub is the exchange we always needed:</strong> fan-to-fan, team-color-coded, with a rep system that rewards the community builders. No corporate middlemen. No bots. Just us.
-      </p>
+      <p class="sec-eyebrow reveal">Our Moment</p>
+      <h2 class="moment-h2 reveal d1">THIS IS<br><em>OUR SEASON.</em></h2>
+      <p class="moment-body reveal d2">Sold-out arenas. A fan base that built this league from the ground up. Season ticket holders who can't make a game used to leave their seats empty — or lose them to bots and anonymous resellers.</p>
+      <p class="moment-body reveal d3"><strong>Hardwood Hub is the exchange this league deserves:</strong> verified member-to-member, with payment protection, a trade flow built for cross-city swaps, and a rep system that rewards the people who show up. No middlemen. No bots. Just the community.</p>
     </div>
   </div>
 </section>
 
-<!-- ── Teams Scroll ───────────────────────────────────── -->
-<section id="teams" aria-label="All 15 WNBA teams">
+<!-- TEAMS TICKER -->
+<section id="teams">
   <div class="teams-scroll">
-    <div class="teams-track" id="teams-track" aria-hidden="true">
-      <!-- Built by JS -->
-    </div>
+    <div class="teams-track" id="teams-track"></div>
   </div>
 </section>
 
-<!-- ── How It Works ──────────────────────────────────── -->
-<section id="how" aria-labelledby="how-heading">
+<!-- HOW IT WORKS -->
+<section id="how">
   <div class="container">
-    <div class="section-header">
-      <p class="section-eyebrow reveal">How It Works</p>
-      <h2 class="section-title reveal reveal-delay-1" id="how-heading">STRAIGHTFORWARD.<br>NO DRAMA.</h2>
-      <p class="section-sub reveal reveal-delay-2">Verify once, then list, offer, and close deals. Payment comes through within 24 hours of completion. That's it.</p>
+    <div class="sec-header">
+      <p class="sec-eyebrow reveal">How It Works</p>
+      <h2 class="sec-title reveal d1">STRAIGHTFORWARD.<br>NO DRAMA.</h2>
+      <p class="sec-sub reveal d2">Verify once, then list, offer, and close deals. Payment comes through within 24 hours of completion.</p>
     </div>
-
     <div class="how-grid">
       <div class="how-step reveal">
-        <div class="how-step-num" aria-hidden="true">1</div>
-        <div class="how-step-icon">✅</div>
+        <div class="how-step-num">1</div>
+        <div class="how-step-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="var(--orange)" stroke-width="1.5"/><path d="M10 16.5l4 4 8-8" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3 class="how-step-title">Verify</h3>
-        <p class="how-step-body">Upload your season ticket card or proof of purchase. One-time review, then you're in. Verified badge on your profile.</p>
+        <p class="how-step-body">Upload your season ticket card and add a card on file. One-time manual review — once approved, you're a verified member and can list or offer.</p>
       </div>
-      <div class="how-step reveal reveal-delay-1">
-        <div class="how-step-num" aria-hidden="true">2</div>
-        <div class="how-step-icon">🎟️</div>
+      <div class="how-step reveal d1">
+        <div class="how-step-num">2</div>
+        <div class="how-step-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="10" width="24" height="14" rx="2" stroke="var(--orange)" stroke-width="1.5"/><path d="M4 15h24M10 10V8a2 2 0 014 0v2M18 10V8a2 2 0 014 0v2" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
         <h3 class="how-step-title">List</h3>
-        <p class="how-step-body">Post your seats, parking, club access, or merch. No fee to list. Set your price or mark it as a trade.</p>
+        <p class="how-step-body">Post your seats with tier, section, perks, and price. Mark it as a trade — seeking a seat in another city — or a straight sale. No fee to list.</p>
       </div>
-      <div class="how-step reveal reveal-delay-2">
-        <div class="how-step-num" aria-hidden="true">3</div>
-        <div class="how-step-icon">🤝</div>
+      <div class="how-step reveal d2">
+        <div class="how-step-num">3</div>
+        <div class="how-step-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 16h16M20 12l4 4-4 4M12 12l-4 4 4 4" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3 class="how-step-title">Deal</h3>
-        <p class="how-step-body">Make an offer, go back and forth, confirm the terms. Both fans see a deal summary page when you're locked in.</p>
+        <p class="how-step-body">Make an offer — seat, cash, perks. Counter back and forth. When both sides confirm the agreed value, a payment hold is placed on both cards. No one gets charged unless there's a default.</p>
       </div>
-      <div class="how-step reveal reveal-delay-3">
-        <div class="how-step-num" aria-hidden="true">4</div>
-        <div class="how-step-icon">💸</div>
-        <h3 class="how-step-title">Get Paid</h3>
-        <p class="how-step-body">Transfer your ticket through your team's app, mark it sent. Buyer confirms received. Done — payment lands within 24 hours.</p>
+      <div class="how-step reveal d3">
+        <div class="how-step-num">4</div>
+        <div class="how-step-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="6" y="8" width="20" height="16" rx="2" stroke="var(--orange)" stroke-width="1.5"/><path d="M16 12v8M13 14.5l3-2.5 3 2.5" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3 class="how-step-title">Transfer</h3>
+        <p class="how-step-body">Send your ticket in your team's app, mark it sent. The other side confirms received. When both members confirm, holds are released and the deal closes. $1 flat fee on completed trades.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── The Exchange ───────────────────────────────────── -->
-<section id="exchange" aria-labelledby="exchange-heading">
+<!-- THE EXCHANGE -->
+<section id="exchange">
   <div class="container">
-    <div class="section-header">
-      <p class="section-eyebrow reveal">The Exchange</p>
-      <h2 class="section-title reveal reveal-delay-1" id="exchange-heading">FOUR WAYS<br>TO TRADE</h2>
-      <p class="section-sub reveal reveal-delay-2">Tickets are just the start. Season 30 fan-to-fan exchange covers everything that gets you into the building — and home with a story.</p>
+    <div class="sec-header">
+      <p class="sec-eyebrow reveal">The Exchange</p>
+      <h2 class="sec-title reveal d1">THREE WAYS<br>TO TRADE</h2>
+      <p class="sec-sub reveal d2">Verified member-to-member. Everything that gets you into the building — with payment protection on every deal.</p>
     </div>
-
-    <div class="exchange-grid">
-      <div class="exchange-card reveal">
-        <div class="exchange-card-icon">🎟️</div>
-        <h3 class="exchange-card-title">Game Tickets</h3>
-        <p class="exchange-card-body">Section-specific listings with row, seat count, and price. Filter by team, date, or what's included. Sell or mark it as a trade for seats in another city.</p>
-        <div class="exchange-card-tags">
-          <span class="tag">Sell</span>
-          <span class="tag">Trade</span>
-          <span class="tag">Club Included</span>
-          <span class="tag">Parking Bundled</span>
-          <span class="tag">Warmup Access</span>
-        </div>
+    <div class="exch-grid">
+      <div class="exch-card reveal">
+        <div class="exch-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="12" width="32" height="18" rx="2" stroke="var(--orange)" stroke-width="1.5"/><path d="M4 19h32M14 12v-2M20 12v-2M26 12v-2M14 30v2M20 30v2M26 30v2" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3 class="exch-title">Game Tickets</h3>
+        <p class="exch-body">Section, row, tier, and perks — listed by verified members only. Sell at a set price or offer a trade for seats in another city. Payment hold placed on deal confirmation.</p>
+        <div class="exch-tags"><span class="tag">Sell</span><span class="tag">Trade</span><span class="tag">Club Included</span><span class="tag">Parking Bundled</span><span class="tag">Warmup Access</span></div>
       </div>
-
-      <div class="exchange-card reveal reveal-delay-1">
-        <div class="exchange-card-icon">🚗</div>
-        <h3 class="exchange-card-title">Parking Passes</h3>
-        <p class="exchange-card-body">Covered, surface, or heated. Connected to the arena or a 5-minute walk. List the lot name and let buyers pick their preference.</p>
-        <div class="exchange-card-tags">
-          <span class="tag">Covered</span>
-          <span class="tag">Surface</span>
-          <span class="tag">Connected</span>
-          <span class="tag">Multi-pass</span>
-        </div>
+      <div class="exch-card reveal d1">
+        <div class="exch-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M6 22l3-8h22l3 8v6H6v-6z" stroke="var(--orange)" stroke-width="1.5" stroke-linejoin="round"/><circle cx="13" cy="28" r="2.5" stroke="var(--orange)" stroke-width="1.5"/><circle cx="27" cy="28" r="2.5" stroke="var(--orange)" stroke-width="1.5"/><path d="M6 22h28M13 14h14" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3 class="exch-title">Parking Passes</h3>
+        <p class="exch-body">Covered, surface, or connected. Add parking to any ticket listing as a perk, or list it standalone. Verified members only — no anonymous sellers.</p>
+        <div class="exch-tags"><span class="tag">Covered</span><span class="tag">Surface</span><span class="tag">Connected</span><span class="tag">Multi-pass</span></div>
       </div>
-
-      <div class="exchange-card reveal reveal-delay-2">
-        <div class="exchange-card-icon">💎</div>
-        <h3 class="exchange-card-title">Club & Courtside</h3>
-        <p class="exchange-card-body">Tunnel access. Suite invites. VIP lounge passes. Row 1 center. The premium experiences that don't make it to public resale.</p>
-        <div class="exchange-card-tags">
-          <span class="tag">Courtside</span>
-          <span class="tag">Club Level</span>
-          <span class="tag">Suite</span>
-          <span class="tag">F&B Included</span>
-        </div>
+      <div class="exch-card reveal d2">
+        <div class="exch-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 34L6 18l4-8h20l4 8L20 34z" stroke="var(--orange)" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 18h28M14 10l6 8M20 18l6-8" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3 class="exch-title">Club & Courtside</h3>
+        <p class="exch-body">Tunnel access. Suite invites. VIP lounge passes. Row 1 center. The premium experiences that never hit public resale — circulated exclusively inside the member network.</p>
+        <div class="exch-tags"><span class="tag">Courtside</span><span class="tag">Club Level</span><span class="tag">Suite</span><span class="tag">F&amp;B Included</span></div>
       </div>
-
-      <div class="exchange-card reveal reveal-delay-3">
-        <div class="exchange-card-icon">🎽</div>
-        <h3 class="exchange-card-title">Merch Exchange</h3>
-        <p class="exchange-card-body">Jerseys, warm-ups, tees, hats, hoodies. Condition-rated (Mint / Good / Fair) with retail price comparison so everyone knows what they're getting.</p>
-        <div class="exchange-card-tags">
-          <span class="tag">Jersey</span>
-          <span class="tag">Warm-Up</span>
-          <span class="tag">Mint Condition</span>
-          <span class="tag">Player Name</span>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Fan Rep ────────────────────────────────────────── -->
-<section id="fan-rep" aria-labelledby="fan-rep-heading">
-  <div class="container">
-    <div class="rep-layout">
-
-      <div class="rep-left">
-        <p class="section-eyebrow reveal">Fan Rep</p>
-        <h2 class="section-title reveal reveal-delay-1" id="fan-rep-heading">YOUR REP<br>OPENS DOORS</h2>
-        <p class="section-sub reveal reveal-delay-2" style="margin-left:0;text-align:left;">
-          Every completed deal, approved photo, and verified ticket holder adds to your Fan Rep. Hit 25 and you get 24-hour early access to every new listing that drops. Community builders get first pick.
-        </p>
-        <div class="rep-actions-list reveal reveal-delay-3" id="rep-actions" aria-label="How to earn Fan Rep">
-          <!-- Built by JS -->
-        </div>
-        <p style="font-size:12px;color:rgba(245,239,224,0.4);margin-top:16px;" class="reveal reveal-delay-4">
-          Early access threshold: 25 Fan Rep · Configurable per season
-        </p>
-      </div>
-
-      <div class="rep-right">
-        <div class="rep-score-card reveal reveal-delay-1">
-          <div class="rep-score-header">
-            <div class="rep-score-user">
-              <div class="rep-avatar" aria-hidden="true">💛</div>
-              <div>
-                <div class="rep-name">Jordan M.</div>
-                <div class="rep-team">Indiana Fever · Chicago, IL</div>
-              </div>
-            </div>
-            <div>
-              <div class="rep-score-num" aria-label="Fan Rep score: 47">47</div>
-              <div class="rep-score-label">Fan Rep</div>
-            </div>
-          </div>
-
-          <div class="rep-bar" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100" aria-label="Fan Rep progress">
-            <div class="rep-bar-fill" id="rep-bar-fill" style="width:0%"></div>
-          </div>
-          <div class="rep-bar-labels">
-            <span>0</span>
-            <span>25 → Early Access 🔑</span>
-          </div>
-
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;">
-            <span class="badge badge-gold">Verified Fan</span>
-            <span class="badge badge-green">Early Access</span>
-            <span class="badge badge-outline">Season 30</span>
-          </div>
-        </div>
-
-        <div class="rep-score-card reveal reveal-delay-2" style="background:rgba(255,255,255,0.02);">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-            <span style="font-family:var(--font-head);font-size:16px;letter-spacing:0.06em;color:var(--cream);">RECENT ACTIVITY</span>
-            <span class="badge badge-orange">+10 pts</span>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="font-size:13px;color:rgba(245,239,224,0.7);">✅ Season ticket verified <span style="float:right;color:var(--gold);font-weight:700;">+10</span></div>
-            <div style="font-size:13px;color:rgba(245,239,224,0.7);">🎟️ Sold 2x Fever vs. Wings <span style="float:right;color:var(--gold);font-weight:700;">+5</span></div>
-            <div style="font-size:13px;color:rgba(245,239,224,0.7);">📸 Fan wall photo featured <span style="float:right;color:var(--gold);font-weight:700;">+2</span></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── Fan Wall ───────────────────────────────────────── -->
-<section id="fan-wall" aria-labelledby="fan-wall-heading">
-  <div class="container">
-    <div class="section-header">
-      <p class="section-eyebrow reveal">Fan Wall</p>
-      <h2 class="section-title reveal reveal-delay-1" id="fan-wall-heading">YOUR MOMENTS.<br>OUR WALL.</h2>
-      <p class="section-sub reveal reveal-delay-2">Real fans. Real games. Real energy. Submit your photo and get featured — and earn Fan Rep when it goes live.</p>
-    </div>
-
-    <div class="fan-wall-grid reveal reveal-delay-1" id="fan-wall-grid" role="list" aria-label="Fan submitted photos">
-      <!-- Built by JS -->
-    </div>
-
-    <p class="fan-wall-hashtags reveal">
-      Tag us: <span>#HardwoodHub</span> <span>#Season30</span> <span>#WBB</span> <span>#WNBA</span> · Or DM us on Instagram <span>@hardwoodhub</span>
-    </p>
-  </div>
-</section>
-
-<!-- ── Watch Parties ──────────────────────────────────── -->
-<section id="watch-parties" aria-labelledby="wp-heading">
-  <div class="container">
-    <div class="section-header">
-      <p class="section-eyebrow reveal">Watch Party Network</p>
-      <h2 class="section-title reveal reveal-delay-1" id="wp-heading">FIND YOUR<br>HOME BASE</h2>
-      <p class="section-sub reveal reveal-delay-2">Official watch party venues in cities across the league. RSVP directly — no app needed. Want to host? Apply below.</p>
-    </div>
-
-    <div class="cities-grid reveal reveal-delay-1" id="cities-grid" role="list" aria-label="Watch party cities">
-      <!-- Built by JS -->
-    </div>
-
-    <div style="text-align:center;margin-top:40px;" class="reveal">
-      <p style="font-size:14px;color:rgba(245,239,224,0.5);margin-bottom:16px;">Don't see your city? We're building out the network for Season 30.</p>
-      <button class="btn-secondary" data-modal="venue" style="margin:0 auto;">Apply to Host a Watch Party →</button>
-    </div>
-  </div>
-</section>
-
-<!-- ── Waitlist CTA ───────────────────────────────────── -->
-<section id="waitlist" aria-labelledby="waitlist-heading">
-  <div class="waitlist-bg" aria-hidden="true"></div>
+<!-- WAITLIST -->
+<section id="waitlist">
+  <div class="waitlist-bg"></div>
   <div class="container">
     <div class="waitlist-content">
-      <h2 class="waitlist-h2 reveal" id="waitlist-heading">
-        FIRST IN.<br><em>FIRST PICK.</em>
-      </h2>
-      <p class="waitlist-sub reveal reveal-delay-1">
-        Get early access before Season 30 tip-off. Early members start with 25 Fan Rep — enough to unlock 24-hour early listing access on day one.
-      </p>
-
-      <div class="waitlist-perks reveal reveal-delay-2">
-        <div class="waitlist-perk">
-          <span class="waitlist-perk-icon">🔑</span>
-          <span>Early access</span>
-        </div>
-        <div class="waitlist-perk">
-          <span class="waitlist-perk-icon">🏅</span>
-          <span>25 Fan Rep on signup</span>
-        </div>
-        <div class="waitlist-perk">
-          <span class="waitlist-perk-icon">📸</span>
-          <span>Fan Wall founding member badge</span>
-        </div>
+      <h2 class="waitlist-h2 reveal">FIRST IN.<br><em>FIRST PICK.</em></h2>
+      <p class="waitlist-sub reveal d1">Get in early. Founding members get first access when we go live — before we open to the public.</p>
+      <div class="waitlist-perks reveal d2">
+        <div class="waitlist-perk"><span class="perk-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7.5l2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>First access at launch</span></div>
+        <div class="waitlist-perk"><span class="perk-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7.5l2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Founding member badge</span></div>
+        <div class="waitlist-perk"><span class="perk-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7.5l2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Shape what we build</span></div>
       </div>
-
-      <div class="waitlist-form reveal reveal-delay-3" id="waitlist-form-wrapper">
-        <input
-          class="waitlist-input"
-          id="waitlist-email"
-          type="email"
-          placeholder="Enter your email"
-          autocomplete="email"
-          aria-label="Email address for waitlist"
-        >
-        <button class="waitlist-submit" id="waitlist-submit" type="button">
-          Count Me In →
-        </button>
+      <div class="waitlist-form reveal d3">
+        <input class="waitlist-input" id="wl-email" type="email" placeholder="Enter your email" autocomplete="email">
+        <button class="waitlist-submit" id="wl-btn">Count Me In →</button>
       </div>
-      <div class="waitlist-success" id="waitlist-success" role="alert" aria-live="polite"></div>
-
-      <p class="waitlist-note reveal reveal-delay-4">No spam. Just early access and one update when we launch. 🏀</p>
+      <div class="waitlist-ok" id="wl-ok" role="alert">You're in. We'll reach out before launch.</div>
+      <p class="waitlist-note reveal d4">No spam. Just early access and one update when we launch.</p>
     </div>
   </div>
 </section>
 
-<!-- ── Footer ─────────────────────────────────────────── -->
-<footer role="contentinfo">
+<!-- FOOTER -->
+<footer>
   <div class="container">
     <div class="footer-inner">
       <div>
         <div class="footer-logo">Hardwood<span>Hub</span></div>
-        <div class="footer-copy" style="margin-top:8px;">Built by WNBA fans · Season 30 · May 8, 2026</div>
+        <div class="footer-copy" style="margin-top:8px">Built by WNBA fans · Verified members only</div>
       </div>
-      <nav class="footer-links" aria-label="Footer links">
+      <nav class="footer-links">
         <a href="#how">How It Works</a>
-        <a href="#exchange">Exchange</a>
-        <a href="#fan-wall">Fan Wall</a>
-        <a href="#watch-parties">Watch Parties</a>
+        <a href="#exchange">The Exchange</a>
         <a href="#waitlist" data-modal="waitlist">Join Waitlist</a>
       </nav>
-      <div class="footer-copy">© 2026 Hardwood Hub · Fan-first, always.</div>
+      <div class="footer-copy">© Hardwood Hub · Fan-first, always.</div>
     </div>
   </div>
 </footer>
 
-<!-- ── Modal ──────────────────────────────────────────── -->
-<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
   <div class="modal">
-    <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+    <button class="modal-close" id="modal-close">×</button>
     <h2 class="modal-title" id="modal-title"></h2>
     <p class="modal-sub" id="modal-sub"></p>
-    <div class="modal-form" id="modal-form" style="display:flex;flex-direction:column;gap:12px;"></div>
-    <div class="modal-success" id="modal-success" role="alert" aria-live="polite"></div>
+    <div class="modal-form" id="modal-form"></div>
+    <div class="modal-success" id="modal-success"></div>
   </div>
 </div>
 
-<script src="js/main.js"></script>
+<script>
+/* ── Data ─────────────────────────────────────────────── */
+var TEAMS=[
+  {name:'Indiana Fever',color:'#FFCD00'},{name:'Las Vegas Aces',color:'#C8102E'},
+  {name:'Minnesota Lynx',color:'#236192'},{name:'New York Liberty',color:'#86CEBC'},
+  {name:'Atlanta Dream',color:'#C8102E'},{name:'Seattle Storm',color:'#2C5234'},
+  {name:'Phoenix Mercury',color:'#E56020'},{name:'Connecticut Sun',color:'#F05023'},
+  {name:'Chicago Sky',color:'#418FDE'},{name:'Golden State Valkyries',color:'#1D1160'},
+  {name:'Dallas Wings',color:'#002B5C'},{name:'Los Angeles Sparks',color:'#552583'},
+  {name:'Washington Mystics',color:'#002B5C'},{name:'Portland Fire',color:'#CC0000'},
+  {name:'Toronto Tempo',color:'#CE1141'}
+];
+
+
+/* Supabase — replace with your keys */
+var SB_URL='YOUR_SUPABASE_URL';
+var SB_KEY='YOUR_SUPABASE_ANON_KEY';
+
+/* ── Helpers ──────────────────────────────────────────── */
+function qs(s,ctx){return(ctx||document).querySelector(s)}
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!==undefined)e.innerHTML=html;return e}
+function toast(msg){var t=el('div','toast',msg);document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add('show')});setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove()},300)},3500)}
+
+/* ── Nav ──────────────────────────────────────────────── */
+window.addEventListener('scroll',function(){qs('#nav').classList.toggle('scrolled',window.scrollY>40)},{passive:true});
+qs('#nav-tog').addEventListener('click',function(){qs('#nav-links').classList.toggle('open')});
+document.querySelectorAll('#nav-links a').forEach(function(a){a.addEventListener('click',function(){qs('#nav-links').classList.remove('open')})});
+
+/* ── Reveal ───────────────────────────────────────────── */
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+/* ── Hero join ────────────────────────────────────────── */
+function heroJoin(){
+  var email=qs('#hero-email').value.trim();
+  if(!email||!email.includes('@')){qs('#hero-email').style.borderColor='var(--orange)';qs('#hero-email').focus();return}
+  saveWaitlist({email:email,type:'hero'}).then(function(){
+    qs('#hero-email').style.display='none';
+    qs('#hero-email').nextElementSibling.style.display='none';
+    qs('#hero-ok').style.display='block';
+  });
+}
+
+/* ── Teams ────────────────────────────────────────────── */
+var tt=qs('#teams-track');
+[].concat(TEAMS,TEAMS).forEach(function(t){
+  var chip=el('div','team-chip');
+  chip.innerHTML='<span class="team-dot" style="background:'+t.color+'"></span><span class="team-chip-name">'+t.name+'</span>';
+  tt.appendChild(chip);
+});
+
+/* ── Waitlist section ─────────────────────────────────── */
+qs('#wl-btn').addEventListener('click',function(){
+  var email=qs('#wl-email').value.trim();
+  if(!email||!email.includes('@')){toast('Enter a valid email address.');return}
+  qs('#wl-btn').disabled=true;qs('#wl-btn').textContent='Saving…';
+  saveWaitlist({email:email,type:'waitlist'}).then(function(){
+    qs('.waitlist-form').style.display='none';
+    qs('#wl-ok').classList.add('show');
+  });
+});
+qs('#wl-email').addEventListener('keydown',function(e){if(e.key==='Enter')qs('#wl-btn').click()});
+
+/* ── Supabase save ────────────────────────────────────── */
+async function saveWaitlist(data){
+  data.source='hardwoodhub';data.submitted_at=new Date().toISOString();
+  if(SB_URL!=='YOUR_SUPABASE_URL'){
+    try{
+      await fetch(SB_URL+'/rest/v1/waitlist',{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},body:JSON.stringify(data)});
+    }catch(e){console.warn('Supabase offline, logged locally')}
+  }
+  console.log('[HH waitlist]',data);
+}
+
+/* ── Modal ────────────────────────────────────────────── */
+var activeModal=null;
+function openModal(type,data){
+  var ov=qs('#modal-overlay'),form=qs('#modal-form'),succ=qs('#modal-success');
+  form.style.display='flex';form.style.flexDirection='column';form.style.gap='12px';
+  succ.className='modal-success';form.innerHTML='';
+  if(type==='waitlist'){
+    qs('#modal-title').textContent='Get Early Access';
+    qs('#modal-sub').textContent='Be among the first verified members on Hardwood Hub. Founding members get first access when we go live.';
+    form.innerHTML='<div><label class="modal-lbl" for="m-name">Your Name</label><input class="modal-input" id="m-name" type="text" placeholder="Jordan M." autocomplete="name"></div><div><label class="modal-lbl" for="m-email">Email</label><input class="modal-input" id="m-email" type="email" placeholder="you@email.com" autocomplete="email"></div><div><label class="modal-lbl" for="m-team">Your Team</label><select class="modal-select" id="m-team"><option value="">Pick your team →</option>'+TEAMS.map(function(t){return'<option value="'+t.name+'">'+t.name+'</option>'}).join('')+'</select></div><div><label class="modal-lbl" for="m-type">Fan type</label><select class="modal-select" id="m-type"><option value="">What describes you?</option><option value="season">Season ticket holder</option><option value="frequent">Go to 5+ games/season</option><option value="casual">Go when I can</option><option value="interested">Interested fan</option></select></div><button class="modal-btn" id="m-submit">Count Me In →</button>';
+    qs('#m-submit').addEventListener('click',function(){submitModal('waitlist')});
+  }
+  ov.classList.add('open');activeModal=type;document.body.style.overflow='hidden';
+}
+
+async function submitModal(type){
+  var btn=qs('#m-submit');btn.disabled=true;btn.textContent='Saving…';
+  var data={type:type};
+  document.querySelectorAll('#modal-form .modal-input,#modal-form .modal-select').forEach(function(i){if(i.value)data[i.id]=i.value});
+  await saveWaitlist(data);
+  qs('#modal-form').style.display='none';
+  var succ=qs('#modal-success');
+  var msgs={waitlist:{title:"You're on the list.",body:"We'll reach out before we go live. Founding members get first access."}};
+  var m=msgs[type]||msgs.waitlist;
+  succ.innerHTML='<div class="modal-success-icon"><svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="var(--gold)" stroke-width="1.5"/><path d="M16 27l7 7 13-13" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="modal-success-title">'+m.title+'</div><div class="modal-success-body">'+m.body+'</div>';
+  succ.classList.add('show');
+}
+
+function closeModal(){qs('#modal-overlay').classList.remove('open');document.body.style.overflow='';activeModal=null}
+qs('#modal-close').addEventListener('click',closeModal);
+qs('#modal-overlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&activeModal)closeModal()});
+
+/* ── CTA buttons ──────────────────────────────────────── */
+document.querySelectorAll('[data-modal]').forEach(function(btn){
+  btn.addEventListener('click',function(e){e.preventDefault();openModal(this.dataset.modal)});
+});
+
+/* ── Smooth scroll ────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-72,behavior:'smooth'})}
+  });
+});
+</script>
 </body>
 </html>
